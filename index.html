@@ -3,39 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>As Spor - Dijital Kataloglar</title>
+    <title>As Spor | 2026 Koleksiyonu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; padding: 20px; display: flex; justify-content: center; }
-        .container { background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; font-size: 26px; margin-bottom: 5px; }
-        p.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 25px; }
-        h2 { font-size: 16px; color: #555; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 20px; margin-bottom: 10px; }
-        .btn { display: flex; justify-content: space-between; align-items: center; background: white; color: #333; padding: 14px; margin-bottom: 10px; text-decoration: none; border: 1px solid #e1e4e8; border-radius: 8px; font-weight: 600; transition: all 0.2s; }
-        .btn:hover { border-color: #0366d6; color: #0366d6; background: #f1f8ff; transform: translateY(-2px); }
-        .footer { text-align: center; margin-top: 30px; font-size: 12px; color: #aaa; }
+        :root {
+            /* Marka Renkleri */
+            --joma: #0070d1;
+            --adidas: #000000;
+            --uhlsport: #e11d2b;
+            --asspor: #2563eb;
+            --bg: #f3f4f6;
+            --text: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* HEADER */
+        header {
+            background: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #111;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-top: 8px;
+            font-size: 1rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* BÖLÜM BAŞLIKLARI */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Renkli Noktalar */
+        .dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 12px; }
+        .dot.joma { background-color: var(--joma); }
+        .dot.adidas { background-color: var(--adidas); }
+        .dot.uhl { background-color: var(--uhlsport); }
+        .dot.as { background-color: var(--asspor); }
+
+        /* KART LİSTESİ */
+        .catalog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            text-decoration: none; /* Link çizgisini kaldır */
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #e5e7eb;
+        }
+
+        .card-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+        }
+
+        /* İNDİR BUTONU (İKON) */
+        .download-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4b5563;
+            transition: all 0.2s;
+            flex-shrink: 0; /* İkonun sıkışmasını engeller */
+        }
+
+        .card:hover .download-icon {
+            background-color: var(--text);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* MOBİL UYUM */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .card { padding: 16px; }
+            .card-title { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <header>
         <h1>AS SPOR</h1>
-        <p class="subtitle">2026 Sezonu Güncel Katalogları</p>
+        <div class="subtitle">2026 Dijital Ürün Katalogları</div>
+    </header>
 
-        <h2>Joma Koleksiyonu</h2>
-        <a href="joma-takim-sporlari-2026.pdf" class="btn" target="_blank"><span>Joma Takım Sporları 2026</span> 📥</a>
-        
-        <a href="joma-yaz-2026-ayakkabi_.pdf" class="btn" target="_blank"><span>Joma Yaz 2026 Ayakkabı</span> 📥</a>
+    <div class="container">
 
-        <a href="joma-kis-2026-ayakkabi.pdf" class="btn" target="_blank"><span>Joma Kış 2026 Ayakkabı</span> 📥</a>
+        <div class="brand-header">
+            <div class="dot joma"></div>
+            <div class="brand-name" style="color: var(--joma)">JOMA</div>
+        </div>
 
-        <a href="joma-kis-2026-tekstil-aksesuar_.pdf" class="btn" target="_blank"><span>Joma Kış 2026 Tekstil</span> 📥</a>
+        <div class="catalog-list">
+            <a href="joma-takim-sporlari-2026.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Takım Sporları</div>
+                    <h3 class="card-title">2026 Takım Kataloğu</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
 
-        <h2>Diğer Markalar</h2>
-        <a href="adidas-takim-sporlari-2026.pdf" class="btn" target="_blank"><span>Adidas Takım Sporları 2026</span> 📥</a>
-        <a href="uhlsport-takim-sporlari-2025.pdf" class="btn" target="_blank"><span>Uhlsport Takım Sporları 2025</span> 📥</a>
-        <a href="as-spor-aksesuar-katalog.pdf" class="btn" target="_blank"><span>As Spor Aksesuar</span> 📥</a>
+            <a href="joma-yaz-2026-ayakkabi_.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Ayakkabı</div>
+                    <h3 class="card-title">Yaz 2026 Ayakkabı</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
 
-        <div class="footer">© 2026 As Spor</div>
+            <a href="joma-kis-2026-ayakkabi.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Ayakkabı</div>
+                    <h3 class="card-title">Kış 2026 Ayakkabı</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
+
+            <a href="joma-kis-2026-tekstil-aksesuar_.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Tekstil & Aksesuar</div>
+                    <h3 class="card-title">Kış 2026 Tekstil</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
+        </div>
+
+        <div class="brand-header">
+            <div class="dot adidas"></div>
+            <div class="brand-name" style="color: var(--adidas)">ADIDAS</div>
+        </div>
+
+        <div class="catalog-list">
+            <a href="adidas-takim-sporlari-2026.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Performance</div>
+                    <h3 class="card-title">Takım Sporları 2026</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
+        </div>
+
+        <div class="brand-header">
+            <div class="dot uhl"></div>
+            <div class="brand-name" style="color: var(--uhlsport)">UHLSPORT</div>
+        </div>
+
+        <div class="catalog-list">
+            <a href="uhlsport-takim-sporlari-2025.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Futbol</div>
+                    <h3 class="card-title">Takım Sporları 2025</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
+        </div>
+
+        <div class="brand-header">
+            <div class="dot as"></div>
+            <div class="brand-name" style="color: var(--asspor)">DİĞER</div>
+        </div>
+
+        <div class="catalog-list">
+            <a href="as-spor-aksesuar-katalog.pdf" class="card" target="_blank">
+                <div class="card-content">
+                    <div class="card-tag">Ekipman</div>
+                    <h3 class="card-title">As Spor Aksesuar Kataloğu</h3>
+                </div>
+                <div class="download-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            © 2026 As Spor
+        </footer>
+
     </div>
 
 </body>
